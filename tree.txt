@@ -1,0 +1,139 @@
+/**
+ *
+ * @author liangjun01
+ */
+public class node {
+  public node left;
+  public node right;
+  public int data;
+  
+  public  node(int data){
+      this.data = data;
+      this.left = null;
+      this.right = null;
+  }
+}
+
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+/**
+ *
+ * @author liangjun01
+ */
+public class tree {
+
+    private node head;
+
+    public node createTree(int[] datas) {
+        for (int data : datas) {
+            create(data);
+        }
+        return head;
+    }
+
+    public void create(int data) {
+        node newNode = new node(data);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        node parent;
+        node current = head;
+        while (true) {
+            parent = current;
+            if (data < current.data) {
+                current = current.left;
+                if (current == null) {
+                    parent.left = newNode;
+                    return;
+                }
+            } else {
+                current = current.right;
+                if (current == null) {
+                    parent.right = newNode;
+                    return;
+                }
+
+            }
+        }
+    }
+
+    public void preOrder(node root) {
+        System.out.println(root.data);
+        if (root.left != null) {
+            preOrder(root.left);
+        }
+        if (root.right != null) {
+            preOrder(root.right);
+        }
+    }
+
+    public void preOrder() {
+        preOrder(this.head);
+    }
+
+    public void middleOrder(node root) {
+        if (root.left != null) {
+            middleOrder(root.left);
+        }
+        System.out.println(root.data);
+        if (root.right != null) {
+            middleOrder(root.right);
+        }
+    }
+
+    public void middleOrder() {
+        middleOrder(this.head);
+    }
+
+    public void postOrder(node root) {
+        if (root.left != null) {
+            postOrder(root.left);
+        }
+        if (root.right != null) {
+            postOrder(root.right);
+        }
+        System.out.println(root.data);
+    }
+
+    public void postOrder() {
+        postOrder(this.head);
+    }
+
+    public void layerOrder(node root) {
+        if (root == null) {
+            return;
+        }
+        Queue<node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            node n = q.poll();
+            System.out.println(n.data);
+            if (n.left != null) {
+                q.add(n.left);
+            }
+            if (n.right != null) {
+                q.add(n.right);
+            }
+        }
+
+    }
+
+    public void layerOrder() {
+        layerOrder(this.head);
+    }
+}
+
+/**
+ *
+ * @author liangjun01
+ */
+int[] datas = {2, 8, 7, 4, 9, 5, 3, 1, 7, 6};
+        tree t = new tree();
+        t.createTree(datas);
+        t.preOrder();
+//        t.middleOrder();
+//        t.postOrder();
+//        t.layerOrder();
