@@ -1,6 +1,6 @@
 /**
  *
- * @author liangjun01
+ * @author liangjun
  */
 public class node {
   public node left;
@@ -20,7 +20,7 @@ import java.util.Queue;
 
 /**
  *
- * @author liangjun01
+ * @author liangjun
  */
 public class tree {
 
@@ -128,7 +128,7 @@ public class tree {
 
 /**
  *
- * @author liangjun01
+ * @author liangjun
  */
 int[] datas = {2, 8, 7, 4, 9, 5, 3, 1, 7, 6};
         tree t = new tree();

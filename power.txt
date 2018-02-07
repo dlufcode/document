@@ -1,0 +1,27 @@
+ /**
+ *
+ * @author liangjun
+ */
+    public static double myPow(double x, int n) {
+        int num = Math.abs(n);
+        double ret = power(x, num);
+        if (n < 0) {
+            ret = 1 / ret;
+        }
+        return ret;
+    }
+
+    public static double power(double x, int n) {
+        if (n == 0) {
+            return 1;
+        }
+        double tmp = power(x, n / 2);
+        double ret;
+        if ((n & 1) == 1) {
+            ret = tmp * tmp * x;
+        } else {
+
+            ret = tmp * tmp;
+        }
+        return ret;
+    }
