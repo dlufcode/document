@@ -1,0 +1,6 @@
+curl -w "TCP handshake:%{time_connect},SSL handshake:%{time_appconnect}\n" -so /dev/null https://www.baidu.com
+http TCP
+https TCP+SSL
+上面命令中的w参数表示指定输出格式，timeconnect 变量表示 TCP 握手的耗时，timeappconnect 变量表示 SSL 握手的耗时（更多变量请查看文档和实例），s参数和o参数用来关闭标准输出。
+/dev/null
+表示空设备，这里就是把输出记录到空设备里，就是不记录日志。
